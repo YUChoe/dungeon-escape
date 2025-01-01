@@ -80,7 +80,6 @@ func hide_all():
 func showup(addr):
 	LOG('invoked room addr %s' % addr)
 	var target 
-	
 	if addr not in map: 
 		# some error 
 		return 
@@ -105,6 +104,22 @@ func showup(addr):
 	target.process_mode = 0  # enable collusion events
 	target.init_room(map[current_location], was_before[1])
 	Node_Player.move_to(starting_point)
+
+func _on_turning_back_door_body_entered(body: Node2D) -> void:
+	LOG("back ===================================================")
+	is_changing_scene = true
+	LOG("c %s" % current_location)
+	# expecting !!
+	# move to was_before and enter_door <<< 
+	var old_addr = current_location
+	var new_addr = map[was_before[0]][was_before[1]]
+	was_before = [old_addr, new_addr[1]]
+	current_location = new_addr[0]
+	LOG("was before %s, %s" % [new_addr[0], new_addr[1]])
+	LOG("to map[%s]" % current_location)
+	hide_all()
+	showup(current_location)
+	is_changing_scene = false
 
 func LOG(s):
 	var funcname = get_stack()[1]["function"] if len(get_stack()) > 1 and "function" in get_stack()[1] else "''"

@@ -25,5 +25,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func LOG(s):
+	var funcname = get_stack()[1]["function"] if len(get_stack()) > 1 and "function" in get_stack()[1] else "''"
+	var linenum = get_stack()[1]["line"] if len(get_stack()) > 1 and "line" in get_stack()[1] else "-1"
 	print("%10.3f [%-15s:%d] %s" % [Time.get_unix_time_from_system(), 
-			"%s.%s" % [name, get_stack()[1]["function"]], get_stack()[1]["line"], s])
+			"%s.%s" % [name, funcname], linenum, s])

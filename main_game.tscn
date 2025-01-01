@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cigag10q03kqt"]
+[gd_scene load_steps=11 format=3 uid="uid://cigag10q03kqt"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6oqtn"]
 [ext_resource type="Texture2D" uid="uid://uvklulx8ks1l" path="res://icon.svg" id="2_4akqg"]
@@ -16,6 +16,9 @@ size = Vector2(120, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itbib"]
 size = Vector2(72, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amwtb"]
+size = Vector2(163, 28)
 
 [node name="GameNode" type="Node2D"]
 position = Vector2(491, 320)
@@ -219,6 +222,15 @@ metadata/_edit_group_ = true
 position = Vector2(-0.5, -3)
 shape = SubResource("RectangleShape2D_itbib")
 
+[node name="TurningBackDoor" type="Area2D" parent="."]
+position = Vector2(32, 322)
+scale = Vector2(1.32149, 1.06418)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurningBackDoor"]
+position = Vector2(71.5, 4)
+shape = SubResource("RectangleShape2D_amwtb")
+
 [connection signal="body_entered" from="Wall_has_1exit/door0" to="Wall_has_1exit" method="_on_door_entered" binds= [0]]
 [connection signal="body_entered" from="Wall_has_2exit/door0" to="Wall_has_2exit" method="_on_door_entered" binds= [0]]
 [connection signal="body_entered" from="Wall_has_2exit/door1" to="Wall_has_2exit" method="_on_door_entered" binds= [1]]
+[connection signal="body_entered" from="TurningBackDoor" to="." method="_on_turning_back_door_body_entered"]
