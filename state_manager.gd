@@ -8,7 +8,8 @@ var is_changing_scene = false
 var current_location = "0,0"
 var Was_before = []
 # n -> s -> e -> w
-var MAP = {
+var MAP = {}
+var _MAP = {
 	"0,0": {
 		"type": "starting",
 		"north": ["0,1", "south"]
@@ -49,6 +50,9 @@ var MAP = {
 var starting_point
 
 func _ready() -> void:
+	# ~/.local/share/godot/app_userdata/dungeon escape
+	var file = FileAccess.open("user://file_data.json", FileAccess.READ)
+	MAP = JSON.parse_string(file.get_as_text())
 	hide_all()
 	LOG("starting %s" % MAP[current_location])
 	starting_point = Node_Player.position
@@ -82,7 +86,7 @@ func showup(addr):
 	LOG('invoked room addr %s' % addr)
 	var target 
 	if addr not in MAP: 
-		# some error 
+		LOG("Error no [%s] in MAP" % addr) 
 		return 
 	LOG("map[%s][type] is %s" % [addr, MAP[addr]["type"]])
 	$UI/PositionLabel.text = addr
@@ -95,11 +99,11 @@ func showup(addr):
 	elif MAP[addr]["type"] in [ "nse", "nsw", "new", "sew" ]:
 		LOG("type %s" % MAP[addr]["type"])
 		target = Wall2
-	elif MAP[addr]["type"] == "nsew":  # cross
+	elif MAP[addr]["type"] == "nsew":  # cross TODO:
 		LOG("type %s" % MAP[addr]["type"])
 		# target = Wall3
 	if target == null:
-		# some error
+		LOG("Error target is null")
 		return
 	target.show()
 	target.process_mode = 0  # enable collusion events

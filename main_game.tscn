@@ -25,12 +25,14 @@ position = Vector2(491, 320)
 script = ExtResource("3_2sdy3")
 
 [node name="UI" type="Control" parent="."]
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PositionLabel" type="Label" parent="UI"]
+z_as_relative = false
 layout_mode = 0
 offset_left = -470.0
 offset_top = -288.0
@@ -40,6 +42,7 @@ text = "PositionLabel"
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(112, 192)
+scale = Vector2(0.785124, 0.791139)
 script = ExtResource("1_6oqtn")
 metadata/_edit_group_ = true
 
@@ -53,7 +56,7 @@ position = Vector2(19.5, 18.5)
 shape = SubResource("RectangleShape2D_qkbnq")
 
 [node name="Wall_has_1exit" type="Node2D" parent="."]
-visible = false
+z_index = 1
 position = Vector2(-251, -382)
 script = ExtResource("4_ram0d")
 metadata/_edit_group_ = true
@@ -141,8 +144,35 @@ texture = ExtResource("3_s1ru8")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
+[node name="block8" type="StaticBody2D" parent="Wall_has_1exit"]
+position = Vector2(773, 386)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_1exit/block8"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_1exit/block8"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block9" type="StaticBody2D" parent="Wall_has_1exit"]
+position = Vector2(-35, 387)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_1exit/block9"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_1exit/block9"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
 [node name="Wall_has_2exit" type="Node2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-363, -382)
 script = ExtResource("4_ram0d")
 metadata/_edit_group_ = true
@@ -224,6 +254,32 @@ metadata/_edit_group_ = true
 position = Vector2(-0.5, -3)
 shape = SubResource("RectangleShape2D_itbib")
 
+[node name="block8" type="StaticBody2D" parent="Wall_has_2exit"]
+position = Vector2(949, 391)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_2exit/block8"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_2exit/block8"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block9" type="StaticBody2D" parent="Wall_has_2exit"]
+position = Vector2(7.00006, 389)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_2exit/block9"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_2exit/block9"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
 [node name="TurningBackDoor" type="Area2D" parent="."]
 visible = false
 position = Vector2(32, 322)
@@ -234,6 +290,8 @@ position = Vector2(71.5, 4)
 shape = SubResource("RectangleShape2D_amwtb")
 
 [node name="Wall_has_0exit" type="Node2D" parent="."]
+visible = false
+z_index = 1
 position = Vector2(-251, -382)
 script = ExtResource("4_ram0d")
 metadata/_edit_group_ = true
@@ -312,6 +370,32 @@ metadata/_edit_group_ = true
 texture = ExtResource("3_s1ru8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_0exit/block7"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block8" type="StaticBody2D" parent="Wall_has_0exit"]
+position = Vector2(773, 386)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_0exit/block8"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_0exit/block8"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block9" type="StaticBody2D" parent="Wall_has_0exit"]
+position = Vector2(-47.9999, 388)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_0exit/block9"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_0exit/block9"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
