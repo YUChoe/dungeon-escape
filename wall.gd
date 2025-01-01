@@ -35,5 +35,5 @@ func _on_door_entered(body: Node2D, idx: int) -> void:
 	Node_Game.change_scene_from_current_location(Doors_byIdx[idx])
 
 func LOG(s):
-	print("%10.3f [%-15s] %s" % [Time.get_unix_time_from_system(), 
-			"%s.%s" % [name, get_stack()[1]["function"]], s])
+	print("%10.3f [%-15s:%d] %s" % [Time.get_unix_time_from_system(), 
+			"%s.%s" % [name, get_stack()[1]["function"]], get_stack()[1]["line"], s])
