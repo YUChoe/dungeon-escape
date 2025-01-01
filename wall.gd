@@ -2,30 +2,38 @@ extends Node2D
 
 var WALL_TYPE = ""
 var enter_from = ""
+var Info = {}
 var exits = [] 
 @onready var Node_Player = $"../Player"
 @onready var Node_Game = $".."
 
+var Doors_byIdx = []
+
 func _ready() -> void:
 	pass # Replace with function body.
 
-func set_wall_type(wall_type):
-	WALL_TYPE = wall_type
+func init_room(room_info, enter_door):
+	LOG("info: %s, enter_door: %s" % [room_info, enter_door])
+	Info = room_info
+	WALL_TYPE = Info["type"]
+	Doors_byIdx = []
+	if WALL_TYPE in ["ns", "se", "starting"]:
+		for nd in [ "north", "south", "east", "west" ]:
+			if nd == enter_door: continue
+			if nd not in Info: continue
+			Doors_byIdx.append(nd)
+	#else:
+		#Doors_byIdx = [ "north", "south", "east", "west" ]
+	LOG("Doors_byIdx size[%d]" % (Doors_byIdx.size()))
+	for nd in Doors_byIdx:
+		LOG("Door: %s" % nd)
 	
-func set_door_old_location(was_before):
-	var loc = was_before[0]
-	var door = was_before[1]
-	LOG('invoked %s, %s' % [loc, door])
-	#enter_from = direction
-	LOG("was before loc[%s] door[%s]" % [loc, door])
-	
-
 func _on_door_entered(body: Node2D, idx: int) -> void:
 	LOG('invoked door idx:%d' % idx)
-	#Node_Player.on_door_entered("south")
-	# TODO: by idx 
-	Node_Game.change_scene_from_current_location("south")
-	
+	# NOTE: only handle events -> stage_manager
+	LOG('Doors_byIdx[%d]: %s' % [idx, Doors_byIdx[idx]])
+	Node_Game.change_scene_from_current_location(Doors_byIdx[idx])
+
 func LOG(s):
 	print("%10.3f [%-15s] %s" % [Time.get_unix_time_from_system(), 
 			"%s.%s" % [name, get_stack()[1]["function"]], s])
