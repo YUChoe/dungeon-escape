@@ -24,9 +24,25 @@ var map = {
 	},
 	"1,2": {
 		"type": "nsw",
-		"north": ["1,3", ""],
-		"south": ["1,1", ""],
+		"north": ["1,3", "south"],
+		"south": ["1,1", "north"],
 		"west": ["0,2", "east"]
+	},
+	"1,1": {
+		"type": "ne",
+		"north": ["1,2", "south"],
+		"east": ["2,1", "west"]
+	},
+	"2,1": {
+		"type": "sew",
+		"south": ["2,0", "north"],
+		"east": ["3,1", "west"],
+		"west": ["1,1", "east"]
+	},
+	"3,1": {
+		"type": "nw",
+		"north": ["3,2", "south"],
+		"west": ["2,1", "east"]
 	}
 }
 var starting_point
@@ -58,7 +74,6 @@ func change_scene_from_current_location(exit_door: String) -> void:
 func hide_all():
 	LOG('invoked')
 	for target in [ Wall1, Wall2 ]:
-		
 		target.hide()
 		target.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -77,24 +92,22 @@ func showup(addr):
 	elif map[addr]["type"] in [ "n", "s", "e", "w" ]:
 		# TODO: no way to get back  
 		LOG("type %s" % map[addr]["type"])
-		pass
 	elif map[addr]["type"] in [ "nse", "nsw", "new", "sew" ]:
 		LOG("type %s" % map[addr]["type"])
 		target = Wall2
 	elif map[addr]["type"] == "nsew":  # cross
 		LOG("type %s" % map[addr]["type"])
 		# target = Wall3
-		pass
 	if target == null:
 		# some error
 		return
 	target.show()
 	target.process_mode = 0  # enable collusion events
 	target.init_room(map[current_location], was_before[1])
-	#target.set_door_old_location(was_before)
-	#target.set_room(map[current_location])
 	Node_Player.move_to(starting_point)
 
 func LOG(s):
+	var funcname = get_stack()[1]["function"] if len(get_stack()) > 1 and "function" in get_stack()[1] else "''"
+	var linenum = get_stack()[1]["line"] if len(get_stack()) > 1 and "line" in get_stack()[1] else "-1"
 	print("%10.3f [%-15s:%d] %s" % [Time.get_unix_time_from_system(), 
-			"%s.%s" % [name, get_stack()[1]["function"]], get_stack()[1]["line"], s])
+			"%s.%s" % [name, funcname], linenum, s])

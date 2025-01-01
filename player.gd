@@ -24,11 +24,6 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 
-#func on_door_entered(door: String) -> void:
-	#LOG("door " + door)
-	#stage_manager.is_changing_scene = true
-	#stage_manager.change_scene_from_current_location(door)
-
 func LOG(s):
-	print("%10.3f [%-15s] %s" % [Time.get_unix_time_from_system(), 
-			"%s.%s" % [name, get_stack()[1]["function"]], s])
+	print("%10.3f [%-15s:%d] %s" % [Time.get_unix_time_from_system(), 
+			"%s.%s" % [name, get_stack()[1]["function"]], get_stack()[1]["line"], s])
