@@ -18,6 +18,7 @@ func get_input():
 
 func move_to(new_position):
 	LOG(new_position)
+	set_process_input(false)
 	position = new_position
 
 func _physics_process(delta):
