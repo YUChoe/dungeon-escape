@@ -3,6 +3,7 @@ extends Node2D
 @onready var Wall0 = $Wall_has_0exit
 @onready var Wall1 = $Wall_has_1exit
 @onready var Wall2 = $Wall_has_2exit
+@onready var Wall3 = $Wall_has_3exit
 @onready var Node_Player = $Player
 var is_changing_scene = false
 var current_location = "0,0"
@@ -78,7 +79,7 @@ func change_scene_from_current_location(exit_door: String) -> void:
 
 func hide_all():
 	LOG('invoked')
-	for target in [ Wall0, Wall1, Wall2 ]:
+	for target in [ Wall0, Wall1, Wall2, Wall3 ]:
 		target.hide()
 		target.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -99,9 +100,9 @@ func showup(addr):
 	elif MAP[addr]["type"] in [ "nse", "nsw", "new", "sew" ]:
 		LOG("type %s" % MAP[addr]["type"])
 		target = Wall2
-	elif MAP[addr]["type"] == "nsew":  # cross TODO:
+	elif MAP[addr]["type"] == "nsew":
 		LOG("type %s" % MAP[addr]["type"])
-		# target = Wall3
+		target = Wall3
 	if target == null:
 		LOG("Error target is null")
 		return
@@ -109,11 +110,14 @@ func showup(addr):
 	target.process_mode = 0  # enable collusion events
 	target.init_room(MAP[current_location], Was_before[1])
 	Node_Player.move_to(starting_point)
-
+	
 func _on_turning_back_door_body_entered(body: Node2D) -> void:
-	LOG("===================================================")
+	var t = MAP[current_location]["type"]
+	if t in [ "starting", "ending" ]: 
+		LOG("no turning back")
+		return
 	change_scene_from_current_location(Was_before[1])
-	LOG("===================================================")
+	Node_Player.position.y = -50
 
 func LOG(s):
 	var funcname = get_stack()[1]["function"] if len(get_stack()) > 1 and "function" in get_stack()[1] else "''"

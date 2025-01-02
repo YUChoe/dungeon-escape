@@ -56,6 +56,7 @@ position = Vector2(19.5, 18.5)
 shape = SubResource("RectangleShape2D_qkbnq")
 
 [node name="Wall_has_1exit" type="Node2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-251, -382)
 script = ExtResource("4_ram0d")
@@ -158,7 +159,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
 [node name="block9" type="StaticBody2D" parent="Wall_has_1exit"]
-position = Vector2(-35, 387)
+position = Vector2(-35, 440)
 scale = Vector2(4.09619, 4.97665)
 physics_material_override = SubResource("PhysicsMaterial_sducu")
 metadata/_edit_group_ = true
@@ -268,7 +269,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
 [node name="block9" type="StaticBody2D" parent="Wall_has_2exit"]
-position = Vector2(7.00006, 389)
+position = Vector2(7.00006, 448)
 scale = Vector2(4.09619, 4.97665)
 physics_material_override = SubResource("PhysicsMaterial_sducu")
 metadata/_edit_group_ = true
@@ -387,8 +388,8 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
 [node name="block9" type="StaticBody2D" parent="Wall_has_0exit"]
-position = Vector2(-47.9999, 388)
-scale = Vector2(4.09619, 4.97665)
+position = Vector2(-42, 436)
+scale = Vector2(4.09619, 4.73123)
 physics_material_override = SubResource("PhysicsMaterial_sducu")
 metadata/_edit_group_ = true
 
@@ -399,7 +400,128 @@ texture = ExtResource("3_s1ru8")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_olknf")
 
+[node name="Wall_has_3exit" type="Node2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(-455, -383)
+script = ExtResource("4_ram0d")
+metadata/_edit_group_ = true
+
+[node name="block" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(283, 135)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block2" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(211, 258)
+scale = Vector2(0.966795, 0.968305)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block2"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block3" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(678, 135)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block3"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block3"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="blockn" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(481, 135)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/blockn"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/blockn"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block4" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(880, 135)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block4"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="door0" type="Area2D" parent="Wall_has_3exit"]
+position = Vector2(382.5, 103)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/door0"]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_itbib")
+
+[node name="door1" type="Area2D" parent="Wall_has_3exit"]
+position = Vector2(581, 102)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/door1"]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_itbib")
+
+[node name="door2" type="Area2D" parent="Wall_has_3exit"]
+position = Vector2(778, 103)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/door2"]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_itbib")
+
+[node name="block8" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(1203, 391)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block8"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block8"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
+[node name="block9" type="StaticBody2D" parent="Wall_has_3exit"]
+position = Vector2(10, 450)
+scale = Vector2(4.09619, 4.97665)
+physics_material_override = SubResource("PhysicsMaterial_sducu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall_has_3exit/block9"]
+texture = ExtResource("3_s1ru8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_has_3exit/block9"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_olknf")
+
 [connection signal="body_entered" from="Wall_has_1exit/door0" to="Wall_has_1exit" method="_on_door_entered" binds= [0]]
 [connection signal="body_entered" from="Wall_has_2exit/door0" to="Wall_has_2exit" method="_on_door_entered" binds= [0]]
 [connection signal="body_entered" from="Wall_has_2exit/door1" to="Wall_has_2exit" method="_on_door_entered" binds= [1]]
 [connection signal="body_entered" from="TurningBackDoor" to="." method="_on_turning_back_door_body_entered"]
+[connection signal="body_entered" from="Wall_has_3exit/door0" to="Wall_has_3exit" method="_on_door_entered" binds= [0]]
+[connection signal="body_entered" from="Wall_has_3exit/door1" to="Wall_has_3exit" method="_on_door_entered" binds= [1]]
+[connection signal="body_entered" from="Wall_has_3exit/door2" to="Wall_has_2exit" method="_on_door_entered" binds= [2]]
