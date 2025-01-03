@@ -1,6 +1,7 @@
 {
 	"0,0": {
-		"type": "starting",
+		"type": "n",
+		"special": ["starting"],
 		"north": ["0,1", "south"]
 	},
 	"0,1": {
@@ -34,5 +35,67 @@
 		"type": "nw",
 		"north": ["3,2", "south"],
 		"west": ["2,1", "east"]
+	}, 
+	"1,3": {
+		"type": "s",
+		"south": ["1,2", "north"]
+	},
+	"2,0": {
+		"type": "n",
+		"north": ["2,1", "south"]
+	},
+	"3,2": {
+		"type": "nse",
+		"north": ["3,3", "south"],
+		"south": ["3,1", "north"],
+		"east": ["4,2", "west"]
+	},
+	"3,3": {
+		"type": "se",
+		"south": ["3,2", "north"],
+		"east": ["4,3", "west"]
+	},
+	"4,3": {
+		"type": "sw",
+		"south": ["4,2", "north"],
+		"west": ["3,3", "east"]
+	},
+	"4,1": {
+		"type": "ne",
+		"north": ["4,2", "south"],
+		"east": ["5,1", "west"]
+	},
+	"4,2": {
+		"type": "nsew",
+		"north": ["4,3", "south"],
+		"south": ["4,1", "north"],
+		"east": ["5,2", "west"],
+		"west": ["5,2", "east"]
+	},
+	"5,2": {
+		"type": "sew",
+		"south": ["5,1", "north"],
+		"east": ["6,2", "west"],
+		"west": ["4,2", "east"]
+	},
+	"5,1": {
+		"type": "nsew",
+		"north": ["5,2", "south"],
+		"south": ["5,3", "north"],
+		"east": ["6,1", "west"],
+		"west": ["4,1", "east"]
+	}, 
+	"6,2": {
+		"type": "w",
+		"west": ["5,2", "east"]
+	},
+	"5,0": {
+		"type": "n",
+		"north": ["5,1", "south"]
+	},
+	"6,1": {
+		"type": "w",
+		"special": ["ending"],
+		"west": ["5,1", "east"]	
 	}
 }

@@ -25,11 +25,20 @@ position = Vector2(491, 320)
 script = ExtResource("3_2sdy3")
 
 [node name="UI" type="Control" parent="."]
-z_as_relative = false
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="GoalLabel" type="Label" parent="UI"]
+z_index = 100
+offset_left = -12.0
+offset_top = -8.0
+offset_right = 93.0
+offset_bottom = 15.0
+scale = Vector2(2.81415, 2.6626)
+text = "GoalLabel"
 
 [node name="PositionLabel" type="Label" parent="UI"]
 z_as_relative = false

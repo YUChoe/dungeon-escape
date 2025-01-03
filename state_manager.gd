@@ -5,6 +5,7 @@ extends Node2D
 @onready var Wall2 = $Wall_has_2exit
 @onready var Wall3 = $Wall_has_3exit
 @onready var Node_Player = $Player
+@onready var Goal_Label = $UI/GoalLabel
 var is_changing_scene = false
 var current_location = "0,0"
 var Was_before = []
@@ -79,6 +80,7 @@ func change_scene_from_current_location(exit_door: String) -> void:
 
 func hide_all():
 	LOG('invoked')
+	Goal_Label.hide()
 	for target in [ Wall0, Wall1, Wall2, Wall3 ]:
 		target.hide()
 		target.process_mode = Node.PROCESS_MODE_DISABLED
@@ -91,7 +93,7 @@ func showup(addr):
 		return 
 	LOG("map[%s][type] is %s" % [addr, MAP[addr]["type"]])
 	$UI/PositionLabel.text = addr
-	if MAP[addr]["type"] in [ "ns", "ew", "nw", "ne", "sw", "se", "starting" ]:
+	if MAP[addr]["type"] in [ "ns", "ew", "nw", "ne", "sw", "se" ]:
 		LOG("type %s" % MAP[addr]["type"])
 		target = Wall1
 	elif MAP[addr]["type"] in [ "n", "s", "e", "w" ]:
@@ -106,16 +108,33 @@ func showup(addr):
 	if target == null:
 		LOG("Error target is null")
 		return
+	var map = MAP[current_location]
+	if "special" in map:
+		if "starting" in map["special"] or "ending" in map["special"]:
+			pass
+			# do something
 	target.show()
 	target.process_mode = 0  # enable collusion events
 	target.init_room(MAP[current_location], Was_before[1])
 	Node_Player.move_to(starting_point)
-	
+	set_start_end()
+
+func set_start_end():
+	if "special" in MAP[current_location]:
+		if "starting" in MAP[current_location]["special"]:
+			Goal_Label.text = "START"
+			Goal_Label.show()
+		elif "ending" in MAP[current_location]["special"]:
+			Goal_Label.text = "GOAL!!!"
+			Goal_Label.show()
+			
+
 func _on_turning_back_door_body_entered(body: Node2D) -> void:
-	var t = MAP[current_location]["type"]
-	if t in [ "starting", "ending" ]: 
-		LOG("no turning back")
-		return
+	var map = MAP[current_location]
+	if "special" in map:
+		if "starting" in map["special"] or "ending" in map["special"]:
+			LOG("no turning back")
+			return
 	change_scene_from_current_location(Was_before[1])
 	Node_Player.position.y = -50
 
