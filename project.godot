@@ -14,3 +14,7 @@ config/name="dungeon escape"
 run/main_scene="res://main_game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
